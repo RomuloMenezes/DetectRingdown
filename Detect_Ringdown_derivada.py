@@ -21,7 +21,10 @@ class DetectRingdown(MRJob):
     server_id = '***'
     dict_pmus = {18: 'UFPA', 27: 'UFMA', 36: 'UFJF', 45: 'UFAC', 54: 'UFAM', 63: 'UFBA', 72: 'UFRGS', 81: 'UNIFAP',
                  90: 'UNIFEI', 99: 'UNB', 108: 'COPPE', 117: 'UFC', 126: 'USP-SC', 135: 'UTFPR', 144: 'UFSC',
-                 153: 'UNIR', 162: 'UFMT', 171: 'UNIPAMPA', 180: 'UFMG', 189: 'UFMS', 198: 'UFPE', 207: 'UFT'}
+                 153: 'UNIR', 162: 'UFMT', 171: 'UNIPAMPA', 180: 'UFMG', 189: 'UFMS', 198: 'UFPE', 207: 'UFT',
+                 828: '01_ILS_BAU', 871: 'AT-98012', 898: '02_BAU_ILS_2', 925: 'RU-98012', 952: '03_BAU_CAV_1',
+                 979: 'TU-98013', 1006: '04_CAV_BAU_1', 1041: '05_CAV_BOJ', 1068: 'QRDP', 1095: 'RDP_CAV',
+                 1110: 'RDP_BAU', 1149: 'ARARAQUARA', 1394: 'JGR_RDP1', 1421: 'JGR_RDP2'}
 
     def steps(self):
         return [MRStep(mapper=self.create_measure_windows,
