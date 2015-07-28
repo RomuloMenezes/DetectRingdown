@@ -1,19 +1,17 @@
 #!/usr/bin/env python
 
 import datetime
-from mrjob.protocol import JSONValueProtocol
 import sys
-
-INPUT_PROTOCOL = JSONValueProtocol
+import json
 
 def create_measure_windows():
     for current_line in sys.stdin:
         if current_line is not None:
-            if current_line['Quality'] == 29:  # Quality == 'Good'
-                windows_tags = self.get_window_tags(current_line['Time'])
+            historian_id, time, value, quality = json.loads(current_line)
+            if quality == 29:  # Quality == 'Good'
+                windows_tags = self.get_window_tags(time)
                 for current_tag in windows_tags:
-                    yield (current_line['HistorianID'], current_tag),\
-                          (current_line['Time'], current_line['Value'])
+                    yield (historian_id, current_tag), (time, value)
 
 def get_window_tags(timestamp):
     k = 0.96  # This factor (960 / 1000) "normalizes" the timestamps, mapping an interval of 1000 ms into an

@@ -6,7 +6,6 @@ from mrjob.protocol import JSONValueProtocol
 from os import urandom
 from itertools import islice, imap, repeat
 import string
-
 import datetime
 
 
@@ -25,6 +24,7 @@ class DetectRingdown(MRJob):
                  828: '01_ILS_BAU', 871: 'AT-98012', 898: '02_BAU_ILS_2', 925: 'RU-98012', 952: '03_BAU_CAV_1',
                  979: 'TU-98013', 1006: '04_CAV_BAU_1', 1041: '05_CAV_BOJ', 1068: 'QRDP', 1095: 'RDP_CAV',
                  1110: 'RDP_BAU', 1149: 'ARARAQUARA', 1394: 'JGR_RDP1', 1421: 'JGR_RDP2'}
+
 
     def steps(self):
         return [MRStep(mapper=self.create_measure_windows,
